@@ -10,18 +10,16 @@ import * as echarts from "echarts";
 import moment from "moment";
 import Week from "./week";
 import getWeatherImg from "../../components/getWeatherImg";
+import Back from "../../images/back";
+import { Link } from "react-router-dom";
 
 export default function Index() {
-  const { locations, rectangle, now,night } = useContext(Context) as IContext;
-  const [days, upDays] = useState([]);
+  const { locations, rectangle, now, night } = useContext(Context) as IContext;
   const [today, upToday] = useState([]);
   const chart = useRef();
 
   useEffect(() => {
     if (rectangle) {
-      get7Weather(rectangle).then((data) => {
-        upDays(data.daily);
-      });
       get24hWeather(rectangle).then((data) => {
         upToday(data.hourly);
       });
@@ -88,11 +86,14 @@ export default function Index() {
   }, [xData, yData]);
   return (
     <section className="main">
+      <Link className="main__back" to="/">
+        <Back />
+      </Link>
       <div className="main__city">
         {locations.city},<br />
         {locations.province}
       </div>
-      <div className="main__weather">{getWeatherImg(now.text,!!night)}</div>
+      <div className="main__weather">{getWeatherImg(now.text, !!night)}</div>
       <label className="main__temp">{now.temp}</label>
       <ul>
         <li>

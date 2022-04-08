@@ -8,6 +8,10 @@ body {
   margin: 0;
   user-select: none;
 }
+#app{
+  max-width: 800px;
+  margin: auto;
+}
 
 dl {
   margin-block-start: 0;

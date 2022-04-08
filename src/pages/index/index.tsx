@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import Context from "../../api/context";
 import { IContext } from "../../types";
 import getWeatherImg from "../../components/getWeatherImg";
+import Point from "../../components/point";
 
 export default function Index() {
   const { locations, rectangle,night } = useContext(Context) as IContext;
@@ -92,6 +93,7 @@ export default function Index() {
           </div>
         </div>
       </section>
+      <Point/>
     </section>
   );
 }

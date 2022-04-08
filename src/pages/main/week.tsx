@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useMemo } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { get7Weather } from "../../api";
 import Context from "../../api/context";
 import { IContext } from "../../types";
@@ -17,22 +17,6 @@ export default function Week() {
     }
   }, [rectangle]);
 
-  // const dds = data.map((itm) => {
-  //     return (
-  //       <dd key={itm.fxDate}>
-  //         <span>{moment(itm.fxDate).format("周dd")}</span>
-  //         {getWeatherImg(itm.textDay)}
-  //         <label>
-  //           {itm.tempMax}
-  //           <sup>℃</sup>
-  //           <em>
-  //             {itm.tempMin}
-  //             <sup>℃</sup>
-  //           </em>
-  //         </label>
-  //       </dd>
-  //     );
-  //   })
 
   moment.locale('zh-cn')
   return (

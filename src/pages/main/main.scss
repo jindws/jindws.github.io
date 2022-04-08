@@ -1,6 +1,11 @@
 .main {
   background-color: #fff;
   margin-top: 2.4rem;
+  &__back svg{
+    position: relative;
+    left: 1.375rem;
+    width: 1.375rem;
+  }
   &__city {
     color: #332821;
     font-weight: 700;

@@ -1,11 +1,11 @@
 #index {
-  max-width: 800px;
   margin: auto;
   background: linear-gradient(180deg, #e75481 -22.84%, #929cde 113.36%);
   height: 100vh;
   min-height: 38rem;
   overflow: hidden;
   position: relative;
+  z-index: 2;
   > svg {
     position: absolute;
     top: 3rem;
@@ -29,7 +29,7 @@
     0% {
       opacity: 0;
     }
-    50%{
+    50% {
       opacity: 0.1;
     }
     100% {
@@ -148,6 +148,7 @@
     position: absolute;
     bottom: -1.8rem;
     left: 2.12rem;
+    z-index: 2;
   }
 }
 .data {
@@ -155,6 +156,7 @@
   width: 10rem;
   font-size: 1.125rem;
   color: #fff;
+  z-index: 2;
   dd {
     display: flex;
     justify-content: space-between;
@@ -197,5 +199,30 @@
 @media screen and (max-height: 500px) {
   .home {
     height: 3rem;
+  }
+}
+
+@keyframes point {
+  0% {
+    opacity: 0;
+    zoom: 0;
+  }
+  100% {
+    opacity: 1;
+    zoom: 1.2;
+  }
+}
+
+.point {
+  z-index: 0;
+
+  i {
+    position: fixed;
+    border-radius: 50%;
+    background-color: #fff;
+    display: block;
+    animation: point 2s backwards;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
   }
 }
