@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import Index from './pages/index/index'
+import Index from "./pages/index/index";
 function App() {
   const [data, upData] = useState(JSON.parse(localStorage.forecasts || "{}"));
   useEffect(() => {
@@ -15,7 +15,7 @@ function App() {
         }
       });
   }, []);
-  return <Index/>;
+  return <Index {...data[0]} />;
 }
 
 const root = createRoot(document.getElementById("app"));

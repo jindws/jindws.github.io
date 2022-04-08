@@ -1,12 +1,109 @@
 body {
   margin: 0;
 }
+dl {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
 #index {
   background: linear-gradient(180deg, #e75481 -22.84%, #929cde 113.36%);
   height: 100vh;
-  >svg{
+  > svg {
     position: absolute;
-    top:3rem;
-    left:1rem;
+    top: 3rem;
+    left: 1rem;
+  }
+}
+
+.main {
+  position: absolute;
+  width: 14.375rem;
+  height: 15.4375rem;
+  left: 4.5rem;
+  top: 35%;
+  font-family: "Alegreya Sans", serif;
+
+  background: #fbfbfb;
+  box-shadow: 0.25rem 0 1.25rem rgba(0, 0, 0, 0.25);
+  border-radius: 1.875rem;
+
+  @keyframes weather_icon {
+    from {
+      transform: scale(0.9);
+    }
+    to {
+      transform: scale(1.1);
+    }
+  }
+
+  &__weather {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: -4.43rem;
+    img {
+      width: 7.5rem;
+      left: 3.875rem;
+      animation: weather_icon 2000ms backwards;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+  }
+
+  &__city {
+    color: #332821;
+    font-weight: bold;
+    font-size: 1.25rem;
+    padding-top: 5rem;
+    text-align: center;
+  }
+  &__num {
+    font-weight: bold;
+    font-size: 4rem;
+    padding-left: 1rem;
+    position: relative;
+    display: inline-block;
+    &:before {
+      content: "℃";
+      font-weight: 500;
+      font-size: 0.875rem;
+      position: absolute;
+      right: -0.8rem;
+      top: 1rem;
+    }
+  }
+  a {
+    background: #5e4fc1;
+    border-radius: 1rem;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    width: 10rem;
+    height: 3rem;
+    line-height: 3rem;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    position: absolute;
+    bottom: -1.8rem;
+    left: 2.12rem;
+  }
+}
+
+.home {
+  position: fixed;
+  bottom: 1.25rem;
+  height: 4rem;
+  background: #fbfbfb;
+  width: calc(100% - 2rem);
+  left: 1rem;
+  border-radius: 1.25rem;
+  display: flex;
+  align-items: center;
+  &__data {
+    color: #d86191;
+    font-size: 0.75rem;
+    margin-left: 2.4rem;
+    text-align: center;
   }
 }
