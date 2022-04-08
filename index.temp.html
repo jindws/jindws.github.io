@@ -7,7 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weather</title>
 </head>
-<body>
+<script>
+    function resize(){
+        var maxWidth = 800;
+        var size = Math.min(innerWidth,maxWidth)/375*16
+
+        document.getElementsByTagName('html')[0].style.fontSize=size+'px'
+    }
+    resize()
+</script>
+<body onresize="resize()">
     <section id="app"></section>
 </body>
+
 </html>

@@ -42,6 +42,7 @@
   "dependencies": {
     "babel-loader": "^8.2.4",
     "file-loader": "^6.2.0",
+    "moment": "^2.29.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "webpack": "^5.72.0",

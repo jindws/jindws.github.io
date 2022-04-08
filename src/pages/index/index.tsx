@@ -1,40 +1,107 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import W from "./w";
+import W from "../../images/w";
 import useGetWeatherImg from "../../components/useGetWeatherImg";
 import Home from "../../images/home";
+import { getWeather } from "../../api";
+import Rain from "../../images/rain";
+import Humidity from "../../images/humidity";
+import WindSpeed from "../../images/windSpeed";
+import moment from "moment";
 
 interface IProps {
-  province: string;
-  city: string;
+  locations: {
+    province: string;
+    city: string;
+  };
+  rectangle: string;
 }
 
 export default function Index(props: IProps) {
-  console.log(props);
-  const [WeatherImg, upWeatherImg] = useGetWeatherImg(1);
+  const { locations, rectangle } = props;
+  const [data, upData] = useState({
+    temp: "- -",
+    precip: "-",
+    humidity: "-",
+    windSpeed: "-",
+    text: "",
+    windDir: "",
+  });
 
+  const [WeatherImg, upWeatherImg] = useGetWeatherImg(data.text);
+
+  useEffect(()=>{
+    upWeatherImg(data.text)
+  },[data.text])
+
+
+  const [time, upTime] = useState({week:'',aft:''});
+
+  useEffect(() => {
+    if (rectangle)
+      getWeather(rectangle).then((data) => {
+        upData(data.now);
+        moment.locale("zh-cn");
+        const week = moment(data.updateTime).format("周dd");
+        moment.locale('en-us');
+        const aft = moment(data.updateTime).format("h a")
+        upTime({
+          week,
+          aft,
+        })
+      });
+  }, [rectangle]);
   return (
     <section id="index">
       <W />
       <div className="main">
         <div className="main__weather">{WeatherImg}</div>
         <div className="main__city">
-          {props.city}, {props.province}
+          {locations.city}, {locations.province}
         </div>
-        <dl>
+        <dl className="main__data">
           <dt>
-            <div className="main__num">15</div>
+            <div>{data.temp}</div>
+            <label>{time.week},{time.aft}</label>
           </dt>
-          <dd></dd>
+          <dd>
+            <span className="main__data__wind">{data.windDir}</span>
+            <span className="main__data__text">{data.text}</span>
+          </dd>
         </dl>
         <a href="javascript:">详情</a>
       </div>
-      <div className="home">
-        <div className="home__data">
-          <Home />
-          <div>Home</div>
-        </div>
-      </div>
+      <dl className="data">
+        <dd>
+          <span>
+            <Rain />
+            降水量
+          </span>
+          <span>{data.precip}毫米</span>
+        </dd>
+        <dd>
+          <span>
+            <Humidity />
+            湿度
+          </span>
+          <span>{data.humidity}%</span>
+        </dd>
+        <dd>
+          <span>
+            <WindSpeed />
+            风速
+          </span>
+          <span>{data.windSpeed}km/h</span>
+        </dd>
+      </dl>
+     <section className="footer">
+       <div className="home">
+         <div className="home__data">
+           <Home />
+           <div>Home</div>
+         </div>
+       </div>
+     </section>
     </section>
   );
 }

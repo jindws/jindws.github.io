@@ -1,7 +1,7 @@
 import React from "react";
 export default function W() {
   return (
-      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="30" cy="30" r="29.6809" stroke="#E7B0C9" strokeWidth="0.638298"/>
           <circle cx="30" cy="30" r="26.4894" stroke="#E7B0C9" strokeWidth="0.638298"/>
           <circle cx="30" cy="30" r="23.2979" stroke="#E7B0C9" strokeWidth="0.638298"/>

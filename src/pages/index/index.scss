@@ -4,23 +4,31 @@ body {
 dl {
   margin-block-start: 0;
   margin-block-end: 0;
+  dd {
+    margin-inline-start: 0;
+  }
 }
 #index {
+  max-width: 800px;
+  margin: auto;
   background: linear-gradient(180deg, #e75481 -22.84%, #929cde 113.36%);
   height: 100vh;
+  min-height: 38rem;
+  overflow: hidden;
+  position: relative;
   > svg {
     position: absolute;
     top: 3rem;
     left: 1rem;
+    width: 3.75rem;
   }
 }
 
 .main {
-  position: absolute;
+  position: relative;
   width: 14.375rem;
   height: 15.4375rem;
-  left: 4.5rem;
-  top: 35%;
+  margin: 30% auto 0;
   font-family: "Alegreya Sans", serif;
 
   background: #fbfbfb;
@@ -57,19 +65,81 @@ dl {
     padding-top: 5rem;
     text-align: center;
   }
-  &__num {
-    font-weight: bold;
-    font-size: 4rem;
-    padding-left: 1rem;
-    position: relative;
-    display: inline-block;
-    &:before {
-      content: "℃";
-      font-weight: 500;
-      font-size: 0.875rem;
-      position: absolute;
-      right: -0.8rem;
-      top: 1rem;
+  &__data {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    dt {
+      font-weight: bold;
+      font-size: 4rem;
+      position: relative;
+      display: inline-block;
+      &:before {
+        content: "℃";
+        font-weight: 500;
+        font-size: 0.875rem;
+        position: absolute;
+        right: -0.8rem;
+        top: 1rem;
+      }
+      label {
+        color: rgba(51, 40, 33, 0.5);
+        font-size: 0.875rem;
+        display: block;
+        top: -1.5rem;
+        position: relative;
+      }
+    }
+    @keyframes wind {
+      0% {
+        opacity: 0;
+        right: -100px;
+      }
+      100% {
+        opacity: 1;
+        right: 0;
+      }
+    }
+
+    @keyframes text {
+      0%,
+      30% {
+        opacity: 0;
+        right: -100px;
+      }
+      70% {
+        opacity: 0.3;
+      }
+      100% {
+        opacity: 1;
+        right: 0;
+      }
+    }
+
+    dd {
+      text-align: right;
+      padding-top: 1.5rem;
+      span {
+        border-radius: 1.25rem;
+        line-height: 1rem;
+        color: #fff;
+        font-size: 0.625rem;
+        text-align: center;
+        height: 1rem;
+        position: relative;
+      }
+    }
+    &__wind {
+      display: block;
+      background: rgba(212, 66, 111, 0.5);
+      padding: 0 1.6rem;
+      animation: wind 500ms forwards;
+    }
+    &__text {
+      display: inline-block;
+      background: rgba(106, 117, 186, 0.5);
+      padding: 0 1rem;
+      animation: text 1000ms forwards;
     }
   }
   a {
@@ -87,15 +157,38 @@ dl {
     position: absolute;
     bottom: -1.8rem;
     left: 2.12rem;
+    cursor: none;
   }
 }
-
-.home {
+.data {
+  margin: 3rem auto 0;
+  width: 10rem;
+  font-size: 1.125rem;
+  color: #fff;
+  dd {
+    display: flex;
+    justify-content: space-between;
+    svg {
+      width: 1.4rem;
+    }
+    span {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+.footer{
   position: fixed;
   bottom: 1.25rem;
+  width: 100%;
+  left: 0;
+}
+.home {
+  margin: auto;
+
   height: 4rem;
   background: #fbfbfb;
-  width: calc(100% - 2rem);
+  width: 21.4375rem;
   left: 1rem;
   border-radius: 1.25rem;
   display: flex;
@@ -105,5 +198,14 @@ dl {
     font-size: 0.75rem;
     margin-left: 2.4rem;
     text-align: center;
+    svg{
+      width: 1.1875rem;
+    }
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .home {
+    height: 3rem;
   }
 }
