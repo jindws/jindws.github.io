@@ -1,0 +1,18 @@
+ul {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  list-style-type: none;
+}
+body {
+  margin: 0;
+  user-select: none;
+}
+
+dl {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  dd {
+    margin-inline-start: 0;
+  }
+}

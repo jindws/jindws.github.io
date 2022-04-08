@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./index.scss";
 import W from "../../images/w";
-import useGetWeatherImg from "../../components/useGetWeatherImg";
 import Home from "../../images/home";
 import { getWeather } from "../../api";
 import Rain from "../../images/rain";
@@ -9,17 +8,12 @@ import Humidity from "../../images/humidity";
 import WindSpeed from "../../images/windSpeed";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import Context from "../../api/context";
+import { IContext } from "../../types";
+import getWeatherImg from "../../components/getWeatherImg";
 
-interface IProps {
-  locations: {
-    province: string;
-    city: string;
-  };
-  rectangle: string;
-}
-
-export default function Index(props: IProps) {
-  const { locations, rectangle } = props;
+export default function Index() {
+  const { locations, rectangle,night } = useContext(Context) as IContext;
   const [data, upData] = useState({
     temp: "- -",
     precip: "-",
@@ -29,14 +23,7 @@ export default function Index(props: IProps) {
     windDir: "",
   });
 
-  const [WeatherImg, upWeatherImg] = useGetWeatherImg(data.text);
-
-  useEffect(()=>{
-    upWeatherImg(data.text)
-  },[data.text])
-
-
-  const [time, upTime] = useState({week:'',aft:''});
+  const [time, upTime] = useState({ week: "", aft: "" });
 
   useEffect(() => {
     if (rectangle)
@@ -44,34 +31,35 @@ export default function Index(props: IProps) {
         upData(data.now);
         moment.locale("zh-cn");
         const week = moment(data.updateTime).format("周dd");
-        moment.locale('en-us');
-        const aft = moment(data.updateTime).format("h a")
+        moment.locale("en-us");
+        const aft = moment(data.updateTime).format("h a");
         upTime({
           week,
           aft,
-        })
+        });
       });
   }, [rectangle]);
   return (
     <section id="index">
       <W />
-      <div className="main">
-        <div className="main__weather">{WeatherImg}</div>
-        <div className="main__city">
+      <div className="index">
+        <div className="index__weather">{getWeatherImg(data.text,!!night)}</div>
+        <div className="index__city">
           {locations.city}, {locations.province}
         </div>
-        <dl className="main__data">
+        <dl className="index__data">
           <dt>
             <div>{data.temp}</div>
-            <label>{time.week},{time.aft}</label>
+            <label>
+              {time.week},{time.aft}
+            </label>
           </dt>
           <dd>
-            <span className="main__data__wind">{data.windDir}</span>
-            <span className="main__data__text">{data.text}</span>
+            <span className="index__data__wind">{data.windDir}</span>
+            <span className="index__data__text">{data.text}</span>
           </dd>
         </dl>
-        {/* <a href="javascript:">详情</a> */}
-        <Link to='main'>详情</Link>
+        <Link to="main">详情</Link>
       </div>
       <dl className="data">
         <dd>
@@ -96,14 +84,14 @@ export default function Index(props: IProps) {
           <span>{data.windSpeed}km/h</span>
         </dd>
       </dl>
-     <section className="footer">
-       <div className="home">
-         <div className="home__data">
-           <Home />
-           <div>Home</div>
-         </div>
-       </div>
-     </section>
+      <section className="footer">
+        <div className="home">
+          <div className="home__data">
+            <Home />
+            <div>Home</div>
+          </div>
+        </div>
+      </section>
     </section>
   );
 }

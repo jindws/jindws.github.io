@@ -1,15 +1,3 @@
-body {
-  margin: 0;
-  user-select: none;
-}
-
-dl {
-  margin-block-start: 0;
-  margin-block-end: 0;
-  dd {
-    margin-inline-start: 0;
-  }
-}
 #index {
   max-width: 800px;
   margin: auto;
@@ -26,7 +14,7 @@ dl {
   }
 }
 
-.main {
+.index {
   position: relative;
   width: 14.375rem;
   height: 15.4375rem;
@@ -37,12 +25,15 @@ dl {
   box-shadow: 0.25rem 0 1.25rem rgba(0, 0, 0, 0.25);
   border-radius: 1.875rem;
 
-  @keyframes weather_icon {
-    from {
-      transform: scale(0.9);
+  @keyframes init {
+    0% {
+      opacity: 0;
     }
-    to {
-      transform: scale(1.1);
+    50%{
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 1;
     }
   }
 
@@ -51,12 +42,10 @@ dl {
     text-align: center;
     width: 100%;
     top: -4.43rem;
+    animation: init 1000ms backwards;
     img {
       width: 7.5rem;
       left: 3.875rem;
-      animation: weather_icon 2000ms backwards;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
     }
   }
 
@@ -159,7 +148,6 @@ dl {
     position: absolute;
     bottom: -1.8rem;
     left: 2.12rem;
-    cursor: none;
   }
 }
 .data {
@@ -179,7 +167,7 @@ dl {
     }
   }
 }
-.footer{
+.footer {
   position: fixed;
   bottom: 1.25rem;
   width: 100%;
@@ -200,7 +188,7 @@ dl {
     font-size: 0.75rem;
     margin-left: 2.4rem;
     text-align: center;
-    svg{
+    svg {
       width: 1.1875rem;
     }
   }

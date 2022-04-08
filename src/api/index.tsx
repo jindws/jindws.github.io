@@ -19,6 +19,7 @@ export async function getWeather(location: string): Promise<{
     windSpeed: string;
     text: string;
     windDir: string;
+    obsTime: string;
   };
   updateTime: string;
 }> {
@@ -31,10 +32,24 @@ export async function getWeather(location: string): Promise<{
   });
 }
 
-export async function get7Weather(location: string) {
+export async function get7Weather(location: string): Promise<{
+  daily: [];
+}> {
   return new Promise((resolve) => {
     fetch(
-      `https://devapi.qweather.com/v7/weather/3d?location=${location}&key=ae9136fb06a04934bdd38d87b35ea563`
+      `https://devapi.qweather.com/v7/weather/7d?location=${location}&key=ae9136fb06a04934bdd38d87b35ea563`
+    )
+      .then((data) => data.json())
+      .then(resolve);
+  });
+}
+
+export async function get24hWeather(location: string): Promise<{
+  hourly: [];
+}> {
+  return new Promise((resolve) => {
+    fetch(
+      `https://devapi.qweather.com/v7/weather/24h?location=${location}&key=ae9136fb06a04934bdd38d87b35ea563`
     )
       .then((data) => data.json())
       .then(resolve);

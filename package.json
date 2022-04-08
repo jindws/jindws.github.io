@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jindws/jindws.github.io#readme",
   "devDependencies": {
+    "@types/echarts": "^4.9.13",
     "@types/node": "^17.0.23",
     "@types/react": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
@@ -41,6 +42,7 @@
   },
   "dependencies": {
     "babel-loader": "^8.2.4",
+    "echarts": "^5.3.2",
     "file-loader": "^6.2.0",
     "moment": "^2.29.2",
     "react": "^18.0.0",
