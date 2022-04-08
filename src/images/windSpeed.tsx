@@ -3,8 +3,10 @@ import React from "react";
 export default function WindSpeed({ color = "white" }: { color?: string }) {
   return (
     <svg
-      width="19"
-      height="18"
+      width="1.2rem"
+      style={{
+        padding:'0 0.15rem'
+      }}
       viewBox="0 0 19 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
