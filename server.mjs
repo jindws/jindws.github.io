@@ -1,6 +1,6 @@
 import Webpack from "webpack";
 import WebpackDevServer from "webpack-dev-server";
-import webpackConfig from "./webpack.config.js";
+import webpackConfig from "./webpack.config.dev.mjs";
 
 const compiler = Webpack(webpackConfig);
 const devServerOptions = { ...webpackConfig.devServer, open: true };

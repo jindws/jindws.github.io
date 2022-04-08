@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+}
+#index {
+  background: linear-gradient(180deg, #e75481 -22.84%, #929cde 113.36%);
+  height: 100vh;
+  >svg{
+    position: absolute;
+    top:3rem;
+    left:1rem;
+  }
+}
