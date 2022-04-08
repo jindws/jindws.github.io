@@ -8,6 +8,7 @@ import Rain from "../../images/rain";
 import Humidity from "../../images/humidity";
 import WindSpeed from "../../images/windSpeed";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 interface IProps {
   locations: {
@@ -69,7 +70,8 @@ export default function Index(props: IProps) {
             <span className="main__data__text">{data.text}</span>
           </dd>
         </dl>
-        <a href="javascript:">详情</a>
+        {/* <a href="javascript:">详情</a> */}
+        <Link to='main'>详情</Link>
       </div>
       <dl className="data">
         <dd>
