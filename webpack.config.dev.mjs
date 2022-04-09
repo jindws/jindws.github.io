@@ -8,7 +8,6 @@ export default {
     ...webpackConfig.plugins,
     new HtmlWebpackPlugin({
       template: "./index.temp.html",
-      excludeChunks: ["sw"],
     }),
   ],
 };
