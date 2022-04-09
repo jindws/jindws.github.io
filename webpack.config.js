@@ -4,10 +4,13 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "production",
-  entry: "./src/index.tsx",
+  entry: {
+    index: "./src/index.tsx",
+    sw: "./sw",
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "index.[hash].js",
+    filename: "[name].js",
   },
   module: {
     rules: [
