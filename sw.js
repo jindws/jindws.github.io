@@ -2,7 +2,7 @@
  * service worker 使用
  * 坑点,要放在根目录
  */
-const CACHE_NAME = "_weather-v2";
+const CACHE_NAME = "_weather-v3";
 
 globalThis.addEventListener("install", async (event) => {
   console.log("sw install");
