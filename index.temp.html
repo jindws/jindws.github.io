@@ -10,15 +10,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>Weather</title>
     <script>
-      window.addEventListener("load", () => {
-        // 能力检测
-        if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.register("./sw.js").then((res) => {
-            console.log(res);
-          });
-        }
-      });
-
       function resize() {
         var maxWidth = 700;
         var size = (Math.min(innerWidth, maxWidth) / 375) * 16;
