@@ -33,13 +33,21 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (rectangle) {
-      getWeather(rectangle).then((data: INowWeather) => {
-        upNow(data.now);
-        const hour = moment(data.now.obsTime).format("H");
-        if (+hour >= 18 || +hour <= 6) upNight(true);
-      });
+    function getData() {
+      if (rectangle) {
+        getWeather(rectangle).then((data: INowWeather) => {
+          upNow(data.now);
+          const hour = moment(data.now.obsTime).format("H");
+          if (+hour >= 18 || +hour <= 6) upNight(true);
+        });
+      }
     }
+    getData();
+    /**
+     * 每5min自动更新一次最新的天气
+     */
+    const si = setInterval(getData, 5 * 60 * 1000);
+    return () => clearInterval(si);
   }, [rectangle]);
 
   return (
