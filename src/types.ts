@@ -11,12 +11,12 @@ export interface IContext {
     humidity: string;
     text: string;
     obsTime: string;
-    windDir:string
+    windDir: string;
   };
   night: boolean;
 }
 
-export interface INowWeather{
+export interface INowWeather {
   now: {
     temp: string;
     precip: string;

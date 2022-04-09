@@ -7,8 +7,8 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Context from "./api/context";
 import "./index.scss";
 import moment from "moment";
-import {INowWeather} from "./types";
-import './sw'
+import { INowWeather } from "./types";
+import "./sw";
 
 function App() {
   const [rectangle, upRectangle] = useState("");
@@ -19,15 +19,13 @@ function App() {
     windSpeed: "-",
     humidity: "-",
     text: "",
-    obsTime:''
+    obsTime: "",
   });
   const [locations, upLocations] = useState(
     JSON.parse(localStorage.locations || "{}")
   );
   useEffect(() => {
-    getLocation().then((data:{
-      rectangle:string
-    }) => {
+    getLocation().then((data: { rectangle: string }) => {
       upLocations(data);
       localStorage.locations = JSON.stringify(data);
       upRectangle(data.rectangle.split(";")[0]);
@@ -36,7 +34,7 @@ function App() {
 
   useEffect(() => {
     if (rectangle) {
-      getWeather(rectangle).then((data:INowWeather) => {
+      getWeather(rectangle).then((data: INowWeather) => {
         upNow(data.now);
         const hour = moment(data.now.obsTime).format("H");
         if (+hour >= 18 || +hour <= 6) upNight(true);

@@ -5,7 +5,7 @@ export default function WindSpeed({ color = "white" }: { color?: string }) {
     <svg
       width="1.2rem"
       style={{
-        padding:'0 0.15rem'
+        padding: "0 0.15rem",
       }}
       viewBox="0 0 19 18"
       fill="none"

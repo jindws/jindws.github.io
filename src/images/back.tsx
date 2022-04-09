@@ -2,11 +2,7 @@ import React from "react";
 
 export default function Back() {
   return (
-    <svg
-      viewBox="0 0 20 17"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         fillRule="evenodd"
         clipRule="evenodd"
