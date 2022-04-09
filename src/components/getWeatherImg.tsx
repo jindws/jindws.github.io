@@ -5,17 +5,22 @@ import DayRain from "../images/DayRain.png";
 import NightMoon from "../images/NightMoon.png";
 import NightCloud from "../images/NightCloud.png";
 import NightRain from "../images/NightRain.png";
-import './getWeatherImg.scss'
+import NightStorm from "../images/NightStorm.png";
+import DayStorm from "../images/DayStorm.png";
+import "./getWeatherImg.scss";
 export default function getWeatherImg(type, night = false) {
   let src = [];
   if (type.includes("雨")) {
     src = [DayRain, NightRain];
+  } else if (type.includes("雷")) {
+    src = [DayStorm, NightStorm];
   } else {
     switch (type) {
       case "晴":
         src = [DaySun, NightMoon];
         break;
       case "阴":
+      case "多云":
         src = [DayCloud, NightCloud];
         break;
     }
@@ -23,5 +28,5 @@ export default function getWeatherImg(type, night = false) {
 
   const url = src[night ? 1 : 0];
 
-  return <img className='weather_pic' src={url} alt="" />;
+  return <img className="weather_pic" src={url} alt="" />;
 }

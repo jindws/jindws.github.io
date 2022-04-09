@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import "./index.scss";
 import W from "../../images/w";
 import Home from "../../images/home";
-import { getWeather } from "../../api";
 import Rain from "../../images/rain";
 import Humidity from "../../images/humidity";
 import WindSpeed from "../../images/windSpeed";
@@ -14,50 +13,40 @@ import getWeatherImg from "../../components/getWeatherImg";
 import Point from "../../components/point";
 
 export default function Index() {
-  const { locations, rectangle,night } = useContext(Context) as IContext;
-  const [data, upData] = useState({
-    temp: "- -",
-    precip: "-",
-    humidity: "-",
-    windSpeed: "-",
-    text: "",
-    windDir: "",
-  });
+  const { locations, night, now } = useContext(Context) as IContext;
 
   const [time, upTime] = useState({ week: "", aft: "" });
 
   useEffect(() => {
-    if (rectangle)
-      getWeather(rectangle).then((data) => {
-        upData(data.now);
-        moment.locale("zh-cn");
-        const week = moment(data.updateTime).format("周dd");
-        moment.locale("en-us");
-        const aft = moment(data.updateTime).format("h a");
-        upTime({
-          week,
-          aft,
-        });
+    if (now.obsTime) {
+      moment.locale("zh-cn");
+      const week = moment(now.obsTime).format("周dd");
+      moment.locale("en-us");
+      const aft = moment(now.obsTime).format("h a");
+      upTime({
+        week,
+        aft,
       });
-  }, [rectangle]);
+    }
+  }, [now.obsTime]);
   return (
     <section id="index">
       <W />
       <div className="index">
-        <div className="index__weather">{getWeatherImg(data.text,!!night)}</div>
+        <div className="index__weather">{getWeatherImg(now.text, !!night)}</div>
         <div className="index__city">
           {locations.city}, {locations.province}
         </div>
         <dl className="index__data">
           <dt>
-            <div>{data.temp}</div>
+            <div>{now.temp}</div>
             <label>
               {time.week},{time.aft}
             </label>
           </dt>
           <dd>
-            <span className="index__data__wind">{data.windDir}</span>
-            <span className="index__data__text">{data.text}</span>
+            <span className="index__data__wind">{now.windDir}</span>
+            <span className="index__data__text">{now.text}</span>
           </dd>
         </dl>
         <Link to="main">详情</Link>
@@ -68,21 +57,21 @@ export default function Index() {
             <Rain />
             降水量
           </span>
-          <span>{data.precip}毫米</span>
+          <span>{now.precip}毫米</span>
         </dd>
         <dd>
           <span>
             <Humidity />
             湿度
           </span>
-          <span>{data.humidity}%</span>
+          <span>{now.humidity}%</span>
         </dd>
         <dd>
           <span>
             <WindSpeed />
             风速
           </span>
-          <span>{data.windSpeed}km/h</span>
+          <span>{now.windSpeed}km/h</span>
         </dd>
       </dl>
       <section className="footer">
@@ -93,7 +82,7 @@ export default function Index() {
           </div>
         </div>
       </section>
-      <Point/>
+      <Point />
     </section>
   );
 }

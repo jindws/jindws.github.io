@@ -11,7 +11,7 @@ export default function Week() {
 
   useEffect(() => {
     if (rectangle) {
-      get7Weather(rectangle).then((data) => {
+      get7Weather(rectangle).then((data:{daily:[]}) => {
         upData(data.daily);
       });
     }

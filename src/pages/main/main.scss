@@ -1,7 +1,8 @@
 .main {
   background-color: #fff;
   margin-top: 2.4rem;
-  &__back svg{
+  position: relative;
+  &__back svg {
     position: relative;
     left: 1.375rem;
     width: 1.375rem;
@@ -63,7 +64,7 @@
     }
   }
   &__chart {
-    height: 7.7rem;
+    height: 10rem;
   }
   &__today {
     color: #332821;
@@ -78,12 +79,37 @@
     display: flex;
     align-items: center;
     font-weight: 700;
-    margin-top: 2rem;
+    justify-content: space-evenly;
     dd {
-      flex: 1;
+      flex: 0 0 5.6rem;
       display: flex;
       align-items: center;
       flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 0.5rem;
+
+      div {
+        width: 100%;
+        text-align: center;
+        background: #fff;
+        position: relative;
+        z-index: 2;
+        border-bottom-right-radius: 1.25rem;
+        border-bottom-left-radius: 1.25rem;
+      }
+
+      &.on {
+        i{
+          background: #ececec;
+          filter: blur(20px);
+          width: 100%;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 20%;
+        }
+      }
     }
     label {
       color: rgba(51, 40, 33, 0.5);
@@ -93,9 +119,8 @@
     }
   }
   .week {
-    height: 3.125rem;
     padding: 0 1.25rem;
-    margin-top: 2.2rem;
+    margin: 1.2rem 0;
 
     img {
       height: 3.125rem;
