@@ -1,4 +1,4 @@
-const CACHE_NAME = "weather";
+const CACHE_NAME = "weather-1";
 
 // globalThis.addEventListener("install", function (event: any) {
 //   console.log("[EVENT_INSTALL]");
@@ -11,9 +11,10 @@ globalThis.addEventListener("install", async (event) => {
   // 开启一个cache 得到一个cache对象
   const cache = await caches.open(CACHE_NAME);
   // 等待cache把所有的资源存储
-  await cache.addAll(["/", '/manifest.json',`${link}/index.js`]);
+  await cache.addAll(["/", '/favicon.ico','/manifest.json',`${link}/index.js`]);
   // 等待skipWaiting结束才进入到activate
   await globalThis.skipWaiting();
+  // event.waitUntil(globalThis.skipWaiting());
 });
 
 globalThis.addEventListener("fetch", (event: any) => {
@@ -23,10 +24,12 @@ globalThis.addEventListener("fetch", (event: any) => {
 
 // 网络优先
 async function networkFirst(req) {
+  console.log('fetch',req.url)
   try {
     // 优先网络读取最新的资源
     return await fetch(req);
   } catch (e) {
+    console.log('catch',req.url);
     // 去缓存中读取
     const cache = await caches.open(CACHE_NAME);
     return await cache.match(req);
