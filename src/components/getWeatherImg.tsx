@@ -11,8 +11,10 @@ import "./getWeatherImg.scss";
 export default function getWeatherImg(type, night = false) {
   let src = [];
   if (type.includes("雨")) {
+    // 包含小雨中雨等
     src = [DayRain, NightRain];
   } else if (type.includes("雷")) {
+    // 雷阵雨
     src = [DayStorm, NightStorm];
   } else {
     switch (type) {

@@ -5,27 +5,30 @@ import { IContext } from "../../types";
 import moment from "moment";
 import getWeatherImg from "../../components/getWeatherImg";
 
+/**
+ * 一周天气
+ * @constructor
+ */
 export default function Week() {
-  const { rectangle,night } = useContext(Context) as IContext;
+  const { rectangle, night } = useContext(Context) as IContext;
   const [data, upData] = useState([]);
 
   useEffect(() => {
     if (rectangle) {
-      get7Weather(rectangle).then((data:{daily:[]}) => {
+      get7Weather(rectangle).then((data: { daily: [] }) => {
         upData(data.daily);
       });
     }
   }, [rectangle]);
 
-
-  moment.locale('zh-cn')
+  moment.locale("zh-cn");
   return (
     <dl className="week">
       {data.map((itm) => {
         return (
           <dd key={itm.fxDate}>
             <span>{moment(itm.fxDate).format("周dd")}</span>
-             {getWeatherImg(itm.textDay,!!night)}
+            {getWeatherImg(itm.textDay, !!night)}
             <label>
               {itm.tempMax}
               <sup>℃</sup>

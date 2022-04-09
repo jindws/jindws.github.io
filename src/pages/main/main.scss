@@ -32,12 +32,9 @@
     margin-top: 2rem;
     display: inline-block;
     margin-left: 1.375rem;
-    &:before {
-      content: "℃";
+    sup {
       font-size: 1.5rem;
-      position: absolute;
-      top: 0.8rem;
-      right: -1.25rem;
+      top: -0.4rem;
     }
   }
   ul {
@@ -88,6 +85,7 @@
       position: relative;
       overflow: hidden;
       padding-bottom: 0.5rem;
+      outline: 0;
 
       div {
         width: 100%;
@@ -97,10 +95,15 @@
         z-index: 2;
         border-bottom-right-radius: 1.25rem;
         border-bottom-left-radius: 1.25rem;
+        sup{
+          font-size:0.8rem;
+          position: relative;
+          top:-0.2rem;
+        }
       }
 
       &.on {
-        i{
+        i {
           background: #ececec;
           filter: blur(20px);
           width: 100%;

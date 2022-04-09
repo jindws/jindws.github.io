@@ -5,6 +5,10 @@ import { IContext } from "../../types";
 import moment from "moment";
 import * as echarts from "echarts";
 
+/**
+ * 使用echarts
+ * @constructor
+ */
 export default function Chart() {
   const { rectangle } = useContext(Context) as IContext;
   const [today, upToday] = useState([]);

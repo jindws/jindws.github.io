@@ -201,6 +201,12 @@
   }
 }
 
+@media screen and (min-width: 550px) {
+  .index {
+    margin-top: 25vw;
+  }
+}
+
 @keyframes point {
   0% {
     opacity: 0;

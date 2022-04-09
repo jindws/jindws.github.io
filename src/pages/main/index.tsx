@@ -11,6 +11,10 @@ import Back from "../../images/back";
 import { Link } from "react-router-dom";
 import Chart from "./chart";
 
+/**
+ * 详情页
+ * @constructor
+ */
 export default function Index() {
   const { locations, now, night } = useContext(Context) as IContext;
 
@@ -24,7 +28,10 @@ export default function Index() {
         {locations.province}
       </div>
       <div className="main__weather">{getWeatherImg(now.text, !!night)}</div>
-      <label className="main__temp">{now.temp}</label>
+      <label className="main__temp">
+        {now.temp}
+        <sup>℃</sup>
+      </label>
       <ul>
         <li>
           <Rain color="#658ED9" />

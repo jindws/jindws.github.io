@@ -12,10 +12,14 @@ import { IContext } from "../../types";
 import getWeatherImg from "../../components/getWeatherImg";
 import Point from "../../components/point";
 
+/**
+ * 首页
+ * @constructor
+ */
 export default function Index() {
   const { locations, night, now } = useContext(Context) as IContext;
 
-  const [time, upTime] = useState({ week: "", aft: "" });
+  const [time, upTime] = useState({ week: "", aft: "" }); // 时间
 
   useEffect(() => {
     if (now.obsTime) {
