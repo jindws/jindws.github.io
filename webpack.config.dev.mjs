@@ -1,5 +1,4 @@
 import webpackConfig from "./webpack.config.js";
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
