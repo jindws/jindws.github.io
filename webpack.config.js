@@ -34,6 +34,9 @@ module.exports = {
   resolve: {
     extensions: [".js", "json", ".tsx", ".ts", ".png"],
   },
+  externals: {
+    echarts: "echarts",
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({

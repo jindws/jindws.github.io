@@ -3,7 +3,6 @@ import { get24hWeather } from "../../api";
 import Context from "../../api/context";
 import { IContext } from "../../types";
 import moment from "moment";
-import * as echarts from "echarts";
 
 /**
  * 使用echarts

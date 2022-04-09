@@ -13,7 +13,8 @@ globalThis.addEventListener("install", async (event) => {
     "/",
     "https://jindw.xyz/favicon.ico",
     "/manifest.json",
-    `/dist/index.js`,
+    "/dist/index.js",
+    "https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.min.js",
   ]);
   // 等待skipWaiting结束才进入到activate
   return globalThis.skipWaiting();

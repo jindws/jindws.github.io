@@ -3,6 +3,7 @@
   "parser": "@typescript-eslint/parser",
   "rules": {
     "@typescript-eslint/no-var-requires": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "no-return-await": "error"
   }
 }
