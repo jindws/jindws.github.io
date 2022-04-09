@@ -30,7 +30,7 @@ async function networkFirst(req) {
   console.log("fetch", req.url);
   try {
     // 优先网络读取最新的资源
-    await fetch(req);
+    return await fetch(req);
   } catch (e) {
     console.log("catch", req.url);
     // 去缓存中读取
