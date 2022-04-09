@@ -9,7 +9,7 @@ export default {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./index.temp.html",
-      excludeChunks:['sw']
+      excludeChunks: ["sw"],
     }),
   ],
 };

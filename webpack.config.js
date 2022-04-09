@@ -1,6 +1,13 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const fs = require("fs");
+
+fs.readFile(`manifest.json`, (err, buf) => {
+  if(err) { return }
+  const dir = './dist/manifest.json'
+  fs.writeFile(dir, buf,err => {console.log(err)})
+})
 
 module.exports = {
   mode: "production",
