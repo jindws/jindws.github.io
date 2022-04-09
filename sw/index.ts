@@ -4,15 +4,15 @@ const CACHE_NAME = "weather";
 //   console.log("[EVENT_INSTALL]");
 //   event.waitUntil(caches.open(CACHE_NAME).then((globalThis as any).skipWaiting));
 // });
-
+console.log("sw");
 globalThis.addEventListener("install", async (event) => {
   console.log("sw install");
   // 开启一个cache 得到一个cache对象
   const cache = await caches.open(CACHE_NAME);
   // 等待cache把所有的资源存储
-  await cache.addAll(["/", "/manifest.json", "/index.js"]);
+  await cache.addAll(["/", "/index.js"]);
   // 等待skipWaiting结束才进入到activate
-  await (globalThis as any).skipWaiting();
+  await globalThis.skipWaiting();
 });
 globalThis.addEventListener("fetch", (event: any) => {
   const req = event.request;
@@ -79,15 +79,15 @@ async function networkFirst(req) {
 //   );
 // });
 
-globalThis.addEventListener("activate", async (event:any) => {
-    console.log('sw activate')
-    const keys = await caches.keys();
-    // 判断key 删除旧的资源
-    keys.forEach((key) => {
-        if (key !== CACHE_NAME) {
-            caches.delete(key);
-        }
-    });
-    // 表示service worker激活后，立即活的控制权
-    await (globalThis as any).clients.claim();
+globalThis.addEventListener("activate", async (event: any) => {
+  console.log("sw activate");
+  const keys = await caches.keys();
+  // 判断key 删除旧的资源
+  keys.forEach((key) => {
+    if (key !== CACHE_NAME) {
+      caches.delete(key);
+    }
+  });
+  // 表示service worker激活后，立即活的控制权
+  await globalThis.clients.claim();
 });

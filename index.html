@@ -1,7 +1,16 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><meta name="apple-mobile-web-app-capable" content="yes"><title>Weather</title><script defer="defer" src="dist/index.js"></script><script defer="defer" src="dist/sw.js"></script></head><script>function resize() {
-      var maxWidth = 700;
-      var size = (Math.min(innerWidth, maxWidth) / 375) * 16;
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><meta name="apple-mobile-web-app-capable" content="yes"/><title>Weather</title><script>window.addEventListener("load", () => {
+        // 能力检测
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("./sw.js").then((res) => {
+            console.log(res);
+          });
+        }
+      });
 
-      document.getElementsByTagName("html")[0].style.fontSize = size + "px";
-    }
-    resize();</script><body onresize="resize()"><section id="app"></section></body></html>
+      function resize() {
+        var maxWidth = 700;
+        var size = (Math.min(innerWidth, maxWidth) / 375) * 16;
+
+        document.getElementsByTagName("html")[0].style.fontSize = size + "px";
+      }
+      resize();</script><script defer="defer" src="dist/index.js"></script><script defer="defer" src="dist/sw.js"></script></head><body onresize="resize()"><section id="app"></section></body></html>
