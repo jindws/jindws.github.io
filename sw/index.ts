@@ -11,7 +11,7 @@ globalThis.addEventListener("install", async (event) => {
   // 开启一个cache 得到一个cache对象
   const cache = await caches.open(CACHE_NAME);
   // 等待cache把所有的资源存储
-  await cache.addAll(["/", `${link}/index.js`]);
+  await cache.addAll(["/", '/manifest.json',`${link}/index.js`]);
   // 等待skipWaiting结束才进入到activate
   await globalThis.skipWaiting();
 });

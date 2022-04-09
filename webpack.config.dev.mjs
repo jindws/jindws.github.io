@@ -6,7 +6,7 @@ export default {
   ...webpackConfig,
   mode: "development",
   plugins: [
-    new CleanWebpackPlugin(),
+    ...webpackConfig.plugins,
     new HtmlWebpackPlugin({
       template: "./index.temp.html",
       excludeChunks: ["sw"],
