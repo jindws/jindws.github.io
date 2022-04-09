@@ -4,16 +4,18 @@ const CACHE_NAME = "weather";
 //   console.log("[EVENT_INSTALL]");
 //   event.waitUntil(caches.open(CACHE_NAME).then((globalThis as any).skipWaiting));
 // });
-console.log("sw");
+const link = process.env.NODE_ENV === "production" ? "/dist" : "";
+console.log("sw", process.env.NODE_ENV);
 globalThis.addEventListener("install", async (event) => {
   console.log("sw install");
   // 开启一个cache 得到一个cache对象
   const cache = await caches.open(CACHE_NAME);
   // 等待cache把所有的资源存储
-  await cache.addAll(["/", "/index.js"]);
+  await cache.addAll(["/", `${link}/index.js`]);
   // 等待skipWaiting结束才进入到activate
   await globalThis.skipWaiting();
 });
+
 globalThis.addEventListener("fetch", (event: any) => {
   const req = event.request;
   event.respondWith(networkFirst(req));

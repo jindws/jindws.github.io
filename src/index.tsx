@@ -8,6 +8,7 @@ import Context from "./api/context";
 import "./index.scss";
 import moment from "moment";
 import {INowWeather} from "./types";
+import './sw'
 
 function App() {
   const [rectangle, upRectangle] = useState("");

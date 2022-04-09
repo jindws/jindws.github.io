@@ -5,7 +5,6 @@
   min-height: 38rem;
   overflow: hidden;
   position: relative;
-  z-index: 2;
   > svg {
     position: absolute;
     top: 3rem;
@@ -19,7 +18,7 @@
   width: 14.375rem;
   height: 15.4375rem;
   margin: 30vh auto 0;
-  font-family: "Alegreya Sans", serif;
+  z-index: 2;
 
   background: #fbfbfb;
   box-shadow: 0.25rem 0 1.25rem rgba(0, 0, 0, 0.25);

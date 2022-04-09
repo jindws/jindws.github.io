@@ -6,7 +6,7 @@ module.exports = {
   mode: "production",
   entry: {
     index: "./src/index.tsx",
-    sw: "./sw",
+    sw: "./sw"
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -39,6 +39,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./index.temp.html",
       filename: "../index.html",
+      excludeChunks:['sw']
     }),
   ],
   devServer: {},
