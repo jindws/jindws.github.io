@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import Context from "../../api/context";
 import { IContext } from "../../types";
 import getWeatherImg from "../../components/getWeatherImg";
-import Point from "../../components/point";
+import Point from "./point";
 
 /**
  * 首页

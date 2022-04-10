@@ -9,10 +9,9 @@ import "./index.scss";
 import moment from "moment";
 import { INowWeather } from "./types";
 import "./sw";
+import useLocalData from "./components/useLocalData";
 
 function App() {
-  const [rectangle, upRectangle] = useState("");
-  const [night, upNight] = useState(false);
   const [now, upNow] = useState({
     temp: "-",
     precip: "-",
@@ -21,13 +20,13 @@ function App() {
     text: "",
     obsTime: "",
   });
-  const [locations, upLocations] = useState(
-    JSON.parse(localStorage.locations || "{}")
-  );
+  const [locations, upLocations] = useLocalData("locations", {});
+  const [night, upNight] = useLocalData("night", false);
+  const [rectangle, upRectangle] = useLocalData("rectangle", "");
+
   useEffect(() => {
     getLocation().then((data: { rectangle: string }) => {
       upLocations(data);
-      localStorage.locations = JSON.stringify(data);
       upRectangle(data.rectangle.split(";")[0]);
     });
   }, []);
