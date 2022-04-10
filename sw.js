@@ -2,9 +2,9 @@
  * service worker 使用
  * 坑点,要放在根目录
  */
-const CACHE_NAME = "_weather-v3";
+const CACHE_NAME = "weather-v4";
 
-globalThis.addEventListener("install", async (event) => {
+globalThis.addEventListener("install", async () => {
   console.log("sw install");
   // 开启一个cache 得到一个cache对象
   const _cache = await caches.open(CACHE_NAME);
@@ -14,6 +14,7 @@ globalThis.addEventListener("install", async (event) => {
     "https://jindw.xyz/favicon.ico",
     "/manifest.json",
     "/dist/index.js",
+    "/dist/index.css",
     "https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.min.js",
   ]);
   // 等待skipWaiting结束才进入到activate
