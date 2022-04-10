@@ -1,4 +1,11 @@
-import React, { useEffect, useState, useContext, useMemo, useRef } from "react";
+import React, {
+  useEffect,
+  useState,
+  useContext,
+  useMemo,
+  useRef,
+  useCallback,
+} from "react";
 import { get24hWeather } from "../../api";
 import Context from "../../api/context";
 import { IContext } from "../../types";
@@ -83,15 +90,20 @@ export default function Chart() {
   }, [xData, yData]);
 
   moment.locale("zh-cn");
+
+  const update = useCallback((event) => {
+    upActiveIndex(+event.currentTarget.dataset.id);
+  }, []);
   return (
     <>
       <div className="main__chart" ref={chart} />{" "}
       <dl className="main__card">
         {[0, 1, 2].map((itm) => (
           <dd
-            onClick={() => upActiveIndex(itm)}
+            onClick={update}
             className={activeIndex === itm ? "on" : ""}
             key={itm}
+            data-id={itm}
           >
             <div>
               <span>
