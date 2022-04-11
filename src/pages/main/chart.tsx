@@ -89,8 +89,6 @@ export default function Chart() {
     });
   }, [xData, yData]);
 
-  moment.locale("zh-cn");
-
   const update = useCallback((event) => {
     upActiveIndex(+event.currentTarget.dataset.id);
   }, []);
