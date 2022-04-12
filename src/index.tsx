@@ -37,7 +37,7 @@ function App() {
         getWeather(rectangle).then((data: INowWeather) => {
           upNow(data.now);
           const hour = moment(data.now.obsTime).format("H");
-          if (+hour >= 18 || +hour <= 6) upNight(true);
+          upNight(+hour >= 18 || +hour <= 6);
         });
       }
     }
