@@ -1,6 +1,7 @@
 ## 天气
 
-> 基于此 ui 设计的天气预报(https://www.figma.com/file/8tW8mvI1Lj30dAkWqD4Xay/Weather-App-(⾯试)?nodeid=0%3A1)
+### UI DESIGN
+![design](https://jindw.xyz/upload/2022/04/design-fca44b8e909c4bef9d7904c69e855c1e.png)
 
 ### 技术栈
 `react`,`service worker`,`sass`,`echarts`,`typescript`,`eslint`,`webpack`
