@@ -16,7 +16,6 @@ globalThis.addEventListener("install", async () => {
     "/dist/index.js",
     "/dist/index.css",
     "https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.min.js",
-    "https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.2/moment.min.js",
   ]);
   // 等待skipWaiting结束才进入到activate
   return globalThis.skipWaiting();

@@ -3,11 +3,13 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const fs = require("fs");
 
 module.exports = {
   mode: "production",
   entry: {
     index: "./src/index.tsx",
+    sw: "./sw.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -37,7 +39,6 @@ module.exports = {
   },
   externals: {
     echarts: "echarts",
-    moment: "moment",
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -45,6 +46,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./index.temp.html",
       filename: "../index.html",
+      excludeChunks: ["sw"],
     }),
     new CopyPlugin({
       patterns: [
