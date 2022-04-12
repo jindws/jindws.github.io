@@ -2,7 +2,7 @@
  * service worker 使用
  * 坑点,要放在根目录
  */
-const CACHE_NAME = "weather-v4";
+const CACHE_NAME = "weather-v5";
 
 globalThis.addEventListener("install", async () => {
   console.log("sw install");
@@ -16,6 +16,7 @@ globalThis.addEventListener("install", async () => {
     "/dist/index.js",
     "/dist/index.css",
     "https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.min.js",
+    "https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.2/moment.min.js",
   ]);
   // 等待skipWaiting结束才进入到activate
   return globalThis.skipWaiting();
@@ -41,7 +42,7 @@ async function networkFirst(req) {
   }
 }
 
-globalThis.addEventListener("activate", async (event) => {
+globalThis.addEventListener("activate", async () => {
   console.log("sw activate");
   const keys = await caches.keys();
   // 判断key 删除旧的资源

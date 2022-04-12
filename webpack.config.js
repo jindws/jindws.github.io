@@ -37,6 +37,7 @@ module.exports = {
   },
   externals: {
     echarts: "echarts",
+    moment: "moment",
   },
   plugins: [
     new CleanWebpackPlugin(),
