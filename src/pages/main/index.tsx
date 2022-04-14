@@ -27,7 +27,7 @@ export default function Index() {
         {locations.city},<br />
         {locations.province}
       </div>
-      <div className="main__weather">{getWeatherImg(now.text, !!night)}</div>
+      <div className="main__weather">{getWeatherImg(now.text, night)}</div>
       <label className="main__temp">
         {now.temp}
         <sup>℃</sup>

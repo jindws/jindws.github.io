@@ -3,7 +3,9 @@
     "module": "commonjs",
     "target": "es5",
     "jsx": "react",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "strict": true,
+    "noImplicitAny": true
   },
   "include": [
     "src/**/*"

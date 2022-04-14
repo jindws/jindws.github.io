@@ -1,5 +1,6 @@
 ## 天气
-
+- 此为基于react的spa应用
+- ssr版本:https://github.com/jindws/next_weather.git
 ### UI DESIGN
 ![design](https://jindw.xyz/upload/2022/04/design-fca44b8e909c4bef9d7904c69e855c1e.png)
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import usePoint from "../../components/usePoint";
 
 /**
@@ -10,5 +10,5 @@ export default function Point() {
 
   const [num, addPoint] = usePoint(point, 6) as [number, (arg: number) => void];
 
-  return <div className="point" onClick={addPoint.bind(this, 1)} ref={point} />;
+  return <div className="point" onClick={addPoint.bind(null, 1)} ref={point} />;
 }

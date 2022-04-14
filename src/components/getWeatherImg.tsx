@@ -8,8 +8,8 @@ import NightRain from "../images/NightRain.png";
 import NightStorm from "../images/NightStorm.png";
 import DayStorm from "../images/DayStorm.png";
 import "./getWeatherImg.scss";
-export default function getWeatherImg(type, night = false) {
-  let src = [];
+export default function getWeatherImg(type: string, night = false) {
+  let src: string[] = [];
   if (type.includes("雨")) {
     // 包含小雨中雨等
     src = [DayRain, NightRain];

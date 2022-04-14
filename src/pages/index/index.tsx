@@ -37,7 +37,7 @@ export default function Index() {
     <section id="index">
       <W />
       <div className="index">
-        <div className="index__weather">{getWeatherImg(now.text, !!night)}</div>
+        <div className="index__weather">{getWeatherImg(now.text, night)}</div>
         <div className="index__city">
           {locations.city}, {locations.province}
         </div>

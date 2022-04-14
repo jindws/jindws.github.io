@@ -1,4 +1,4 @@
-function Get(url) {
+function Get(url: string): Promise<any> {
   return new Promise((resolve) => {
     fetch(url)
       .then((data) => data.json())

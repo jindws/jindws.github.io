@@ -17,9 +17,9 @@ import moment from "moment";
  */
 export default function Chart() {
   const { rectangle } = useContext(Context) as IContext;
-  const [today, upToday] = useState([]);
+  const [today, upToday] = useState([]) as any;
   const [activeIndex, upActiveIndex] = useState(Infinity);
-  const chart = useRef();
+  const chart: any = useRef(null);
 
   const [xData, yData] = useMemo(() => {
     moment.locale("en-us");
@@ -53,8 +53,8 @@ export default function Chart() {
       yAxis: {
         type: "value",
         show: false,
-        min: Math.min.call(null, yData),
-        max: Math.max.call(null, yData) - 2,
+        min: Math.min.apply(null, yData),
+        max: Math.max.apply(null, yData) - 2,
         splitLine: {
           show: false,
         },
@@ -89,7 +89,7 @@ export default function Chart() {
     });
   }, [xData, yData]);
 
-  const update = useCallback((event) => {
+  const update = useCallback((event: any) => {
     upActiveIndex(+event.currentTarget.dataset.id);
   }, []);
   return (

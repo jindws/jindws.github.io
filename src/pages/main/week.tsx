@@ -24,11 +24,11 @@ export default function Week() {
   moment.locale("zh-cn");
   return (
     <dl className="week">
-      {data.map((itm) => {
+      {data.map((itm: any) => {
         return (
           <dd key={itm.fxDate}>
             <span>{moment(itm.fxDate).format("周dd")}</span>
-            {getWeatherImg(itm.textDay, !!night)}
+            {getWeatherImg(itm.textDay, night)}
             <label>
               {itm.tempMax}
               <sup>℃</sup>
