@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
-export default function useLocalData(key, base) {
+export default function useLocalData(
+  key: string,
+  base: string | boolean | Record<string, string>
+) {
   const [data, setData] = useState(
     localStorage[key] ? JSON.parse(localStorage[key]) : base
   );

@@ -8,6 +8,6 @@
     "type": "image/png"
   }],
   "background_color": "skyblue",
-  "theme_color": "green",
+  "theme_color": "#fff",
   "display": "standalone"
 }
