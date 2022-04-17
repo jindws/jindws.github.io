@@ -9,7 +9,7 @@ import "./index.scss";
 import moment from "moment";
 import { INowWeather } from "./types";
 import "./sw";
-import useLocalData from "./components/useLocalData";
+import { useLocalStorage } from "shooks";
 
 function App() {
   const [now, upNow] = useState({
@@ -20,9 +20,13 @@ function App() {
     text: "",
     obsTime: "",
   });
-  const [locations, upLocations] = useLocalData("locations", {});
-  const [night, upNight] = useLocalData("night", false);
-  const [rectangle, upRectangle] = useLocalData("rectangle", "");
+  const [locations, { set: upLocations }] = useLocalStorage("locations", {
+    defaultValue: {},
+  });
+  const [night, { set: upNight }] = useLocalStorage("night", {
+    defaultValue: false,
+  });
+  const [rectangle, { set: upRectangle }] = useLocalStorage("rectangle");
 
   useEffect(() => {
     getLocation().then((data: { rectangle: string }) => {
