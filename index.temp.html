@@ -11,18 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>Weather</title>
-    <script>
-      function resize() {
-        var maxWidth = 700;
-        var size = (Math.min(innerWidth, maxWidth) / 375) * 16;
-
-        document.getElementsByTagName("html")[0].style.fontSize = size + "px";
-      }
-      resize();
-    </script>
   </head>
 
-  <body onresize="resize()">
+  <body>
     <section id="app"></section>
   </body>
   <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.min.js"></script>

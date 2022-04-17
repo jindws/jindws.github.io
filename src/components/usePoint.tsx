@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
-import { MutableRefObject } from "_@types_react@18.0.1@@types/react";
+import { useCallback, useEffect, useState, MutableRefObject } from "react";
 
 export default function usePoint(
   point: MutableRefObject<HTMLDivElement>,

@@ -9,9 +9,13 @@ import "./index.scss";
 import moment from "moment";
 import { INowWeather } from "./types";
 import "./sw";
-import { useLocalStorage } from "shooks";
+import { useLocalStorage, useRem } from "shooks";
 
 function App() {
+  useRem({
+    maxWidth: 700,
+  });
+
   const [now, upNow] = useState({
     temp: "-",
     precip: "-",

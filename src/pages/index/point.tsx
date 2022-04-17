@@ -1,6 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, MutableRefObject } from "react";
 import usePoint from "../../components/usePoint";
-import { MutableRefObject } from "_@types_react@18.0.1@@types/react";
 
 /**
  * 随机生成的白色点背景
