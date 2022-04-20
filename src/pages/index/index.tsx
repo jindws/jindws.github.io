@@ -11,6 +11,7 @@ import Context from "../../api/context";
 import { IContext } from "../../types";
 import getWeatherImg from "../../components/getWeatherImg";
 import Point from "./point";
+import { useAnimation } from "shooks";
 
 /**
  * 首页
@@ -33,11 +34,17 @@ export default function Index() {
       });
     }
   }, [now.obsTime]);
+
+  const [weatherAnimation] = useAnimation("fadeIn", {
+    duration: 1,
+  });
   return (
     <section id="index">
       <W />
       <div className="index">
-        <div className="index__weather">{getWeatherImg(now.text, night)}</div>
+        <div className="index__weather" style={weatherAnimation}>
+          {getWeatherImg(now.text, night)}
+        </div>
         <div className="index__city">
           {locations.city}, {locations.province}
         </div>

@@ -22,7 +22,7 @@ module.exports = {
         loader: "ts-loader",
       },
       {
-        test: /\.scss$/,
+        test: /\.scss|.css$/,
         exclude: /node-modules/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },

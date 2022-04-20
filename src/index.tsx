@@ -9,7 +9,7 @@ import "./index.scss";
 import moment from "moment";
 import { INowWeather } from "./types";
 import "./sw";
-import { useLocalStorage, useRem } from "shooks";
+import { useLocalStorage, useRem, useRequest } from "shooks";
 
 function App() {
   useRem({
@@ -32,12 +32,13 @@ function App() {
   });
   const [rectangle, { set: upRectangle }] = useLocalStorage("rectangle");
 
+  const [locationData] = useRequest(getLocation);
   useEffect(() => {
-    getLocation().then((data: { rectangle: string }) => {
-      upLocations(data);
-      upRectangle(data.rectangle.split(";")[0]);
-    });
-  }, []);
+    if (locationData) {
+      upLocations(locationData);
+      upRectangle(locationData && locationData.rectangle?.split(";")[0]);
+    }
+  }, [locationData]);
 
   useEffect(() => {
     function getData() {
