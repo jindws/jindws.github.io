@@ -17,7 +17,7 @@ import moment from "moment";
  */
 export default function Chart() {
   const { rectangle } = useContext(Context) as IContext;
-  const [today, upToday] = useState([]) as any;
+  const [today, upToday] = useState<{ fxTime: number; temp: number }[]>([]);
   const [activeIndex, upActiveIndex] = useState(Infinity);
   const chart: any = useRef(null);
 
@@ -89,9 +89,16 @@ export default function Chart() {
     });
   }, [xData, yData]);
 
-  const update = useCallback((event: any) => {
-    upActiveIndex(+event.currentTarget.dataset.id);
-  }, []);
+  const update = useCallback(
+    (event: {
+      currentTarget: {
+        dataset: any;
+      };
+    }) => {
+      upActiveIndex(+event.currentTarget.dataset.id);
+    },
+    []
+  );
   return (
     <>
       <div className="main__chart" ref={chart} />{" "}

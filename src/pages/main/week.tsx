@@ -11,7 +11,14 @@ import getWeatherImg from "../../components/getWeatherImg";
  */
 export default function Week() {
   const { rectangle, night } = useContext(Context) as IContext;
-  const [data, upData] = useState([]);
+  const [data, upData] = useState<
+    Array<{
+      fxDate: number;
+      textDay: string;
+      tempMax: number;
+      tempMin: number;
+    }>
+  >([]);
 
   useEffect(() => {
     if (rectangle) {
@@ -24,7 +31,7 @@ export default function Week() {
   moment.locale("zh-cn");
   return (
     <dl className="week">
-      {data.map((itm: any) => {
+      {data.map((itm) => {
         return (
           <dd key={itm.fxDate}>
             <span>{moment(itm.fxDate).format("周dd")}</span>
